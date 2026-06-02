@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POD Diesel Diagnostics MN | Fractional Diesel Diagnostic Engineering</title>
+  <meta name="description" content="Advanced diesel diagnostic engineering support for shops, fleets, and equipment owners in Minnesota. Fractional engineer plans, remote support, routine shop visits, and custom troubleshooting support." />
+  <style>
+    :root {
+      --bg: #0f1720;
+      --card: #17212b;
+      --text: #f3f5f7;
+      --muted: #b9c3cd;
+      --accent: #f2b84b;
+      --accent-dark: #d99b25;
+      --line: #2a3745;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1120px, 92%); margin: 0 auto; }
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      background: rgba(15, 23, 32, 0.95);
+      backdrop-filter: blur(8px);
+      z-index: 10;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+    .brand {
+      font-weight: 800;
+      letter-spacing: .5px;
+      font-size: 20px;
+    }
+    .brand span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+      color: var(--muted);
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .hero {
+      padding: 86px 0 68px;
+      background:
+        radial-gradient(circle at top right, rgba(242,184,75,.16), transparent 34%),
+        linear-gradient(180deg, #101a24 0%, #0f1720 100%);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 42px;
+      align-items: center;
+    }
+    .eyebrow {
+      color: var(--accent);
+      text-transform: uppercase;
+      font-size: 13px;
+      letter-spacing: 1.6px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+    h1 {
+      font-size: clamp(38px, 6vw, 64px);
+      line-height: 1.03;
+      margin: 0 0 20px;
+      letter-spacing: -1.8px;
+    }
+    .hero p {
+      color: var(--muted);
+      font-size: 19px;
+      max-width: 660px;
+      margin: 0 0 28px;
+    }
+    .buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      border: 1px solid var(--line);
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #101010;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover { background: var(--accent-dark); }
+    .btn-secondary:hover { border-color: var(--accent); }
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 22px 60px rgba(0,0,0,.25);
+    }
+    .hero-card h3 { margin-top: 0; font-size: 22px; }
+    .check {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+    .check li::before {
+      content: "✓";
+      color: var(--accent);
+      font-weight: 800;
+      margin-right: 10px;
+    }
+    section { padding: 70px 0; }
+    h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.12;
+      margin: 0 0 14px;
+      letter-spacing: -1px;
+    }
+    .section-lead {
+      color: var(--muted);
+      max-width: 760px;
+      font-size: 18px;
+      margin-bottom: 34px;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 22px; }
+    .price {
+      font-size: 34px;
+      font-weight: 800;
+      margin: 16px 0 4px;
+      color: var(--white);
+    }
+    .small { color: var(--muted); font-size: 14px; }
+    .card ul {
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .featured {
+      border-color: var(--accent);
+      transform: translateY(-8px);
+    }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+    .service {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      background: rgba(255,255,255,.025);
+    }
+    .service h3 { margin: 0 0 8px; }
+    .service p { color: var(--muted); margin: 0; }
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      counter-reset: steps;
+    }
+    .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+    }
+    .step::before {
+      counter-increment: steps;
+      content: counter(steps);
+      width: 34px;
+      height: 34px;
+      background: var(--accent);
+      color: #101010;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .contact {
+      background: #111c27;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    form {
+      display: grid;
+      gap: 14px;
+      max-width: 720px;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      background: #0c141d;
+      color: var(--text);
+      font: inherit;
+    }
+    textarea { min-height: 120px; }
+    .form-note {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 720px;
+      margin-top: 12px;
+    }
+    footer {
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    @media (max-width: 860px) {
+      .hero-grid, .cards, .services, .process { grid-template-columns: 1fr; }
+      .featured { transform: none; }
+      .nav { align-items: flex-start; flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">POD <span>Diesel Diagnostics MN</span></div>
+      <nav class="nav-links">
+        <a href="#plans">Plans</a>
+        <a href="#services">Services</a>
+        <a href="#process">How It Works</a>
+        <a href="#consultation">Free Consultation</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Fractional Diesel Diagnostic Engineering</div>
+          <h1>Advanced diagnostic support for diesel shops, fleets, and equipment owners.</h1>
+          <p>
+            Former OEM engine engineering support available to help shops solve difficult engine, emissions,
+            controls, and reliability problems without adding a full-time engineer.
+          </p>
+          <div class="buttons">
+            <a class="btn btn-primary" href="#consultation">Schedule Free Consultation</a>
+            <a class="btn btn-secondary" href="#plans">View Monthly Support Plans</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <h3>Built for shops that need escalation support.</h3>
+          <ul class="check">
+            <li>Complex diesel diagnostics</li>
+            <li>Fault isolation and root-cause analysis</li>
+            <li>Aftertreatment, OBD, ECM/ECU support</li>
+            <li>Remote case review and routine shop visits</li>
+            <li>Monthly retainer or custom B2B support</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="plans">
+      <div class="container">
+        <h2>Monthly fractional engineer plans</h2>
+        <p class="section-lead">
+          Select a plan of interest, schedule a free consultation, and we will confirm whether the plan fits your shop’s actual workload.
+          Custom services can include routine shop visits, remote support, technician coaching, documentation, or urgent diagnostic escalation.
+        </p>
+        <div class="cards">
+          <div class="card">
+            <h3>Diagnostic Starter</h3>
+            <p class="small">For occasional stuck jobs and case review.</p>
+            <div class="price">$1,500/mo</div>
+            <div class="small">Includes 10 diagnostic support hours</div>
+            <ul>
+              <li>Remote diagnostic case review</li>
+              <li>Phone/video support</li>
+              <li>Basic fault isolation support</li>
+              <li>Priority scheduling over one-off calls</li>
+            </ul>
+          </div>
+          <div class="card featured">
+            <h3>Shop Support</h3>
+            <p class="small">For active shops needing steady technical backup.</p>
+            <div class="price">$2,500/mo</div>
+            <div class="small">Includes 20 diagnostic support hours</div>
+            <ul>
+              <li>Remote and scheduled onsite support</li>
+              <li>Complex troubleshooting path planning</li>
+              <li>Technician coaching and case documentation</li>
+              <li>Monthly reliability review</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Fleet / High-Volume</h3>
+            <p class="small">For fleets or shops with recurring diagnostic load.</p>
+            <div class="price">$5,000/mo</div>
+            <div class="small">Includes 50 diagnostic support hours</div>
+            <ul>
+              <li>Routine shop visits</li>
+              <li>Remote escalation support</li>
+              <li>Recurring failure pattern review</li>
+              <li>Custom reporting and reliability improvement plan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>Support areas</h2>
+        <p class="section-lead">Practical engineering support designed to reduce downtime and help technicians move from symptoms to root cause.</p>
+        <div class="services">
+          <div class="service">
+            <h3>Advanced diesel diagnostics</h3>
+            <p>Support for hard-to-resolve engine performance, no-start, derate, fault code, emissions, and reliability problems.</p>
+          </div>
+          <div class="service">
+            <h3>Remote case review</h3>
+            <p>Review fault history, symptoms, prior repairs, photos, service notes, and available data to recommend the next diagnostic path.</p>
+          </div>
+          <div class="service">
+            <h3>Routine shop visits</h3>
+            <p>Scheduled onsite support for recurring cases, technician coaching, process review, and higher-risk jobs.</p>
+          </div>
+          <div class="service">
+            <h3>Custom shop support</h3>
+            <p>Design a monthly support model around your workload, fleet type, customer base, technician capacity, and service bottlenecks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="container">
+        <h2>How it works</h2>
+        <p class="section-lead">Start with a free consultation before any subscription or invoice.</p>
+        <div class="process">
+          <div class="step">
+            <h3>Select plan interest</h3>
+            <p class="small">Tell us whether you are considering 10, 20, or 50 diagnostic hours per month.</p>
+          </div>
+          <div class="step">
+            <h3>Schedule consultation</h3>
+            <p class="small">Use the booking link to schedule an initial call through Google Calendar.</p>
+          </div>
+          <div class="step">
+            <h3>Review shop needs</h3>
+            <p class="small">We review your common failures, technician workflow, onsite needs, and support expectations.</p>
+          </div>
+          <div class="step">
+            <h3>Start with invoice</h3>
+            <p class="small">After agreement, monthly retainers or custom work are invoiced through Square.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="consultation" class="contact">
+      <div class="container">
+        <h2>Schedule a free consultation</h2>
+        <p class="section-lead">
+          Use this section to collect interest. Replace the button link below with your Google Calendar appointment schedule link.
+          Square can be used separately for invoices, recurring invoices, and payment collection.
+        </p>
+
+        <div class="buttons" style="margin-bottom: 24px;">
+          <a class="btn btn-primary" href="https://calendar.app.google/NTNmfSDzLf7TPjEv8">Book Free Consultation</a>
+          <a class="btn btn-secondary" href="mailto:beka@turmi.co?subject=POD Diesel Diagnostics MN Consultation">Email Instead</a>
+        </div>
+
+        <form action="mailto:beka@turmi.co" method="post" enctype="text/plain">
+          <input name="shop_name" placeholder="Shop / company name" />
+          <input name="contact_name" placeholder="Your name" />
+          <input name="phone" placeholder="Phone number" />
+          <input name="email" placeholder="Email address" />
+          <select name="plan_interest">
+            <option value="">Plan of interest</option>
+            <option>Diagnostic Starter — $1,500/mo / 10 hours</option>
+            <option>Shop Support — $2,500/mo / 20 hours</option>
+            <option>Fleet / High-Volume — $5,000/mo / 50 hours</option>
+            <option>Custom / not sure yet</option>
+          </select>
+          <select name="support_type">
+            <option value="">Support type needed</option>
+            <option>Remote diagnostic support</option>
+            <option>Routine shop visits</option>
+            <option>Emergency / stuck job escalation</option>
+            <option>Fleet reliability support</option>
+            <option>Custom monthly support</option>
+          </select>
+          <textarea name="message" placeholder="Briefly describe the diesel diagnostic or shop support need."></textarea>
+          <button class="btn btn-primary" type="submit">Send Inquiry</button>
+        </form>
+        <p class="form-note">
+          Note: this starter form uses email only and does not store customer data. For a more polished free form later, connect Netlify Forms, Google Forms, Tally, or Square appointment/payment links.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <strong>POD Diesel Diagnostics MN</strong><br />
+      DBA of POD RWA LLC, Minnesota<br />
+      Minneapolis–St. Paul area diesel diagnostic engineering support<br />
+      Email: beka@turmi.co | Phone: 763-900-3632
+    </div>
+  </footer>
+</body>
+</html>
